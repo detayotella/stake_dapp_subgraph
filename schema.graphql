@@ -1,0 +1,134 @@
+# schema.graphql
+type Staked @entity(immutable: true) {
+  id: Bytes!                # unique ID (tx hash + logIndex)
+  user: Bytes!              # address
+  amount: BigInt!
+  timestamp: BigInt!
+  newTotalStaked: BigInt!
+  currentRewardRate: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdrawn @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  newTotalStaked: BigInt!
+  currentRewardRate: BigInt!
+  rewardsAccrued: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardsClaimed @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+  newPendingRewards: BigInt!
+  totalStaked: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardRateUpdated @entity(immutable: true) {
+  id: Bytes!
+  oldRate: BigInt!
+  newRate: BigInt!
+  timestamp: BigInt!
+  totalStaked: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EmergencyWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  penalty: BigInt!
+  timestamp: BigInt!
+  newTotalStaked: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakingInitialized @entity(immutable: true) {
+  id: Bytes!
+  stakingToken: Bytes!
+  initialRewardRate: BigInt!
+  timestamp: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakingPaused @entity(immutable: true) {
+  id: Bytes!
+  timestamp: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakingUnpaused @entity(immutable: true) {
+  id: Bytes!
+  timestamp: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Paused @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unpaused @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TokenRecovered @entity(immutable: true) {
+  id: Bytes!
+  token: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
